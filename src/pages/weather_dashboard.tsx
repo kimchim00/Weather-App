@@ -6,13 +6,15 @@ import {
 import { CurrentWeather } from "../components/Current_Weather";
 import { Alert, AlertDescription, AlertTitle } from "../components/ui/Alert";
 import { Button } from "../components/ui/button";
-import { MapPin, AlertTriangle, RefreshCw } from "lucide-react";
+import { MapPin, AlertTriangle, RefreshCw, Route } from "lucide-react";
 import { useGeolocation } from "@/hooks/Use_GeoLacation";
 import { WeatherDetails } from "../components/Weather_Details";
 import { WeatherForecast } from "../components/Weather_Forecast";
 import { HourlyTemperature } from "../components/Hourly_Temprature";
 import WeatherSkeleton from "../components/Loading_Skeleton";
 import { FavoriteCities } from "@/components/Favorite_Cities";
+import { Link } from "react-router-dom";
+
 
 export function WeatherDashboard() {
   const {
@@ -105,6 +107,7 @@ export function WeatherDashboard() {
           onClick={handleRefresh}
           disabled={weatherQuery.isFetching || forecastQuery.isFetching}
         >
+          <Link to="/city/:cityName"><Button className="sr-only">Choose Location</Button></Link>
           <RefreshCw
             className={`h-4 w-4 ${
               weatherQuery.isFetching ? "animate-spin" : ""
