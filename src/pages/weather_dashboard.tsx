@@ -100,14 +100,17 @@ export function WeatherDashboard() {
     <div className="space-y-4">
       <FavoriteCities />
       <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
+        <Link to="/city/:cityName"><Button >Choose Location</Button></Link>
+        </div>
         <Button
           variant="outline"
           size="icon"
           onClick={handleRefresh}
           disabled={weatherQuery.isFetching || forecastQuery.isFetching}
         >
-          <Link to="/city/:cityName"><Button className="sr-only">Choose Location</Button></Link>
+          
           <RefreshCw
             className={`h-4 w-4 ${
               weatherQuery.isFetching ? "animate-spin" : ""
